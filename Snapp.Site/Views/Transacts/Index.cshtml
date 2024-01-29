@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Snapp.DataAccessLayer.Entities.Transact>
+
+@using Snapp.Core.Scopes
+
+@inject TransactScope  _tscope;
+
+@{
+    ViewData["Title"] = "نمایش لیست سفر ها";
+    Layout = "~/Views/Shared/_DashbordLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title pull-right">سفر ها</h4>
+                <h4 class="title pull-left">
+                    @*<a href="/Car/Create" class="btn btn-success">جدید</a>
+                        <a href="/Car/ImportFile" class="btn btn-success">ثبت گروهی</a>*@
+                </h4>
+                <div class="clearfix"></div>
+                <br />
+                <input type="text" class="form-control" placeholder="جستجو سفر ..." id="mySearch" />
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.User.Username)</th>
+                            <th>@Html.DisplayNameFor(model => model.Date)</th>
+                            <th>@Html.DisplayNameFor(model => model.StartTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.EndTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.Total)</th>
+                            <th>راننده</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        @foreach (var item in Model)
+                        {
+                            var driver = _tscope.GetUserById((Guid)item.DriverId);
+                           
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.User.Username)</td>
+                                <td>@Html.DisplayFor(model => item.Date)</td>
+                                <td>@Html.DisplayFor(model => item.StartTime)</td>
+                                <td>@Html.DisplayFor(model => item.EndTime)</td>
+                                <td>
+                                    @item.Total.ToString("n0") ریال
+                                </td>
+                                <td>
+                                    @driver.Username
+                                </td>
+                                <td>
+                                    <a href="#" onclick="myDelete('@item.Id')" class="btn btn-xs btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section mySection
+{
+    <script src="~/js/sweet.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#mySearch").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function myDelete(id) {
+            swal({
+                title: "تأیید حذف",
+                text: "آیا از حذف این مقدار اطمینان دارید؟",
+                icon: "warning",
+                buttons: ['لغو', 'بلی'],
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.open('/Transacts/Delete/' + id, '_parent');
+                    }
+                });
+        }
+    </script>
+}
+
+
+

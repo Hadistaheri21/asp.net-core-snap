@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+
+    <link href="~/css/dashbord/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/dashbord/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/css/dashbord/animate.min.css" rel="stylesheet" />
+    <link href="~/css/dashbord/light-bootstrap-dashboard.css" rel="stylesheet" />
+    <link href="~/css/dashbord/light-bootstrap-dashboard-rtl.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/dashbord/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="~/css/dashbord/font.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="/img/sidebar-bg.jpg">
+
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="/" class="simple-text">
+                        مدیریت اسنپ
+                    </a>
+                </div>
+
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#">
+                            <i class="pe-7s-graph"></i>
+                            <p>داشبورد</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user">
+                            <i class="pe-7s-user"></i>
+                            <p>کاربران</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Car">
+                            <i class="pe-7s-car"></i>
+                            <p>خودرو ها</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pricetype">
+                            <i class="pe-7s-note2"></i>
+                            <p>تعرفه ثابت</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Humidity">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>تعرفه رطوبت</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/temperature">
+                            <i class="pe-7s-science"></i>
+                            <p>تعرفه دما</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/monthtype">
+                            <i class="pe-7s-map-marker"></i>
+                            <p>تعرفه زمان</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Role">
+                            <i class="pe-7s-key"></i>
+                            <p>نقش ها</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/discount">
+                            <i class="pe-7s-crop"></i>
+                            <p>کوپن های تخفیف</p>
+                        </a>
+                    </li>
+                    @*<li class="active-pro">
+                        <a href="upgrade.html">
+                            <i class="pe-7s-rocket"></i>
+                            <p>ارتقا به پیشرفته</p>
+                        </a>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">تعویض ناوبری</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">داشبورد</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-dashboard"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret"></b>
+                                    <span class="notification">۳</span>
+                                </a>
+    
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="">
+                                    حساب کاربری
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    کشویی
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">واکنش</a></li>
+                                    <li><a href="#">واکنشی دیگر</a></li>
+                                    <li><a href="#">چیزی</a></li>
+                                    <li><a href="#">واکنش دیگر</a></li>
+                                    <li><a href="#">چیزی</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">لینک جداشده</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    خروج
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content">
+
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+
+            </div>     
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/fontawesome.min.js" integrity="sha512-C8qHv0HOaf4yoA7ISuuCTrsPX8qjolYTZyoFRKNA9dFKnxgzIHnYTOJhXQIt6zwpIFzCrRzUBuVgtC4e5K1nhA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/js/dashbord/bootstrap.min.js"></script>
+    <script src="~/js/dashbord/bootstrap-checkbox-radio-switch.js"></script>
+    <script src="~/js/dashbord/chartist.min.js"></script>
+    <script src="~/js/dashbord/bootstrap-notify.js"></script>
+    <script src="~/js/dashbord/light-bootstrap-dashboard.js"></script>
+    <script src="~/js/dashbord/demo.js"></script>
+
+
+    @RenderSection("mySection", false)
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

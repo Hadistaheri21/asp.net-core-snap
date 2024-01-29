@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+@using Snapp.Core.Scopes
+
+@inject SiteLayoutScope _scope
+
+@{ 
+    string userRole = _scope.GetUserRole(User.Identity.Name);
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/Site.css" rel="stylesheet" />
+
+
+
+    @*map link
+        <link rel="stylesheet" href="~/leaflet/leaflet.css" />
+        <script src="~/leaflet/leaflet.js" ></script>*@
+
+
+</head>
+<body>
+
+    @*ایجاد سه سطر*@
+    <div class="container main-contain">
+        <div class="row main-row">
+            <div class="col-lg-3 col-md-4"></div>
+            @*ایجاد هدر*@
+            <div class="col-lg-6 col-md-8 main-col">
+                <section class="header-section">
+                    <div class="header-area">
+                        <div class="logo-area d-inline-block">
+                            <img src="~/img/Snapp_logo.png" alt="SnappTaxi" class="img-fluid" />
+                        </div>
+                    </div>
+                </section>
+                <section class="main-section">
+                    <div style="margin-top:25px; margin-bottom:15px">
+
+                        @RenderBody()
+
+                    </div>
+                </section>
+                @*فوتر*@
+                <section class="footer-section">
+                    <div class="footer-menu">
+                        <a href="/panel/Dashbord" class="footer-links">
+                            <i class="fa fa-dashboard fa-2x"></i>
+                        </a>
+
+                        <a href="/Panel/UserProfile" class="footer-links">
+                            <i class="fa fa-user fa-2x"></i>
+                        </a>
+
+                        @if (userRole == "driver")
+                        {
+                            <a href="#" class="footer-links">
+                                <i class="fa fa-money fa-2x"></i>
+                            </a>
+
+                            <a href="#" class="footer-links">
+                                <i class="fa fa-folder fa-2x"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/panel/payment" class="footer-links">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </a>
+
+                            <a href="#" class="footer-links">
+                                <i class="fa fa-cog fa-2x"></i>
+                            </a>
+                        }
+
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-3 col-md-4"></div>
+
+        </div>
+    </div>
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    @RenderSection("mySection", false)
+    
+</body>
+</html>

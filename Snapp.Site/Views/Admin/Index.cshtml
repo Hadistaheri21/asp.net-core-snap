@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "پیشخوان مدیریتی";
+    Layout = "~/Views/Shared/_DashbordLayout.cshtml";
+}
+
+@*فراخونی کامپوننت ها*@
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+    @(await Component.InvokeAsync("WeeklyTransactComponent"))
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+    @(await Component.InvokeAsync("TransactInProcessComponent"))
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    @(await Component.InvokeAsync("CancelTransactComponent"))
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    @(await Component.InvokeAsync("LastTransactComponent"))
+
+</div>
+
+
+
+

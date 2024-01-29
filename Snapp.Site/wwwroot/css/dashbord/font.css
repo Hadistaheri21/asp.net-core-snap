@@ -1,0 +1,12 @@
+﻿
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('file:///C:\Project\OnlineTour\Snapp.Taxi\Snapp.Site\wwwroot\fonts\FontAwesome.otf') format('opentype');
+}
+@font-face {
+    font-family: 'fontawesome-webfont';
+    src: url('file:///C:\Project\OnlineTour\Snapp.Taxi\Snapp.Site\wwwroot\fonts\fontawesome-webfont.woff') format('woff');
+}
+body {
+    font-family: FontAwesome !important;
+}

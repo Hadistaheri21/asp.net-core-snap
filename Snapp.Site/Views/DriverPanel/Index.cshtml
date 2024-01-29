@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewData["Title"] = "داشبورد راننده";
+    Layout = "~/Views/Shared/_Site.cshtml";
+
+   
+}
+
+@if (Model.Status == 0)
+    {
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>
+                        تاریخ
+                    </th>
+                    <th>
+                        جمع کل
+                    </th>
+                    <th>
+                        تأیید
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody class="tbody">
+            </tbody>
+        </table>
+
+        @section mySection
+    {
+            <script>
+                $(document).ready(function () {
+                    setInterval(function () {
+                        loadData();
+                    }, 5000);
+                });
+
+                function loadData() {
+                    $.ajax({
+                        url: "/DriverPanel/List",
+                        type: "Get",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+                            var html = '';
+                            $.each(result, function (key, item) {
+                                html += '<tr>';
+                                html += '<td>' + item.date + '</td>';
+                                html += '<td>' + item.total + '</td>';
+                                html += '<td><a href="/driverpanel/UpdateStatus/' + item.id + '" class="btn btn-xs btn-success">تأیید درخواست</a></td>';
+                                html += '</tr>';
+                            });
+
+                            $('.tbody').html(html);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            </script>
+        }
+}
+else
+{
+    if (Model.Status == 1)
+    {
+            <div class="row">
+                <div class="col-12" id="map" style="max-height: 200px"></div>
+                <div class="col-12">
+                    <h3>هزینه سفر : @Model.Price.ToString("n0") ریال</h3>
+                    <br />
+                    <p>@Model.Desc</p>
+                </div>
+                <div class="col-12">
+                    <a class="btn btn-success btn-block" href="/DriverPanel/EndRequest/@Model.TransactId">
+                        اتمام سفر
+                    </a>
+                </div>
+</div>
+    }
+
+    <div id="map" style="max-height: 200px"></div>
+
+    @section mySection
+    {
+
+        <link href="~/map/leaflet.css" rel="stylesheet" />
+        <script src="~/map/leaflet.js"></script>
+
+        <script>
+
+            var lattt1 = @Model.StartLat;
+            var lattt2 = @Model.EndLat;
+
+            var lnggg1 = @Model.StartLng;
+            var lnggg2 = @Model.EndLng;
+
+
+                // نمایش ساده نقشه
+                var map = L.map('map').setView([lattt1, lnggg1], 15);
+                L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+                // تغییر آیکون
+                var IconSetting = L.Icon.extend({
+                    options: {
+                        iconSize: [50, 50],
+                        iconAnchor: [20, 35]
+                    }
+                });
+
+                var FirstIcon = new IconSetting({ iconUrl: '/img/001.png' });
+                var SecondIcon = new IconSetting({ iconUrl: '/img/002.png' });
+
+                var marker = L.marker(
+                new L.LatLng(lattt1, lnggg1),
+                {
+                    icon: FirstIcon
+                }
+                ).addTo(map);
+
+                var marker = L.marker(
+                    new L.LatLng(lattt2, lnggg2),
+                    {
+                        icon: SecondIcon
+                    }
+                ).addTo(map);
+
+        </script>
+
+    }
+}

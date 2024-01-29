@@ -1,0 +1,256 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Site\\Snapp.Site.csproj": {}
+  },
+  "projects": {
+    "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Core\\Snapp.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Core\\Snapp.Core.csproj",
+        "projectName": "Snapp.Core",
+        "projectPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Core\\Snapp.Core.csproj",
+        "packagesPath": "C:\\Users\\Data 212\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Data 212\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj": {
+                "projectPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "KavenegarDotNetCore": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "ZarinpalSandbox": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj",
+        "projectName": "Snapp.DataAccessLayer",
+        "projectPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\Data 212\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Data 212\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Site\\Snapp.Site.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Site\\Snapp.Site.csproj",
+        "projectName": "Snapp.Site",
+        "projectPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Site\\Snapp.Site.csproj",
+        "packagesPath": "C:\\Users\\Data 212\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Site\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Data 212\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Core\\Snapp.Core.csproj": {
+                "projectPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.Core\\Snapp.Core.csproj"
+              },
+              "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj": {
+                "projectPath": "C:\\Project\\OnlineTour\\Snapp.Taxi\\Snapp.DataAccessLayer\\Snapp.DataAccessLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Stimulsoft.Reports.Web.NetCore": {
+              "target": "Package",
+              "version": "[2019.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

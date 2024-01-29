@@ -1,0 +1,246 @@
+﻿@model Snapp.Core.ViewModels.DashbordViewModel
+
+@{
+    ViewData["Title"] = "اسنپ تاکسی";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+
+@if (Model.Status == -1)
+{
+    <div id="map"></div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="bodyModal">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section mySection
+{
+
+        <link href="~/map/leaflet.css" rel="stylesheet" />
+        <script src="~/map/leaflet.js"></script>
+
+        <script>
+
+            function ConvertNumericToRad(Value) {
+                return Value * Math.PI / 180;
+            }
+
+            var lat1;
+            var lon1;
+
+            var lat2;
+            var lon2;
+
+            var R = 6371;
+
+            // تابع مارکر مبدا
+            function myLocation(e) {
+                L.marker(
+                    e.latlng,
+                    {
+                        icon: FirstIcon,
+                        draggable: true
+                    }
+                ).addTo(map);
+
+                lat1 = e.latlng.lat;
+                lon1 = e.latlng.lng;
+
+            }
+
+            //تابع کلیک و مختصات
+            function myClick(e) {
+                L.marker(
+                    e.latlng,
+                    {
+                        icon: SecondIcon
+                    }
+                ).addTo(map);
+
+                lat2 = e.latlng.lat;
+                lon2 = e.latlng.lng;
+
+                var myLat = ConvertNumericToRad(lat2 - lat1);
+                var myLng = ConvertNumericToRad(lon2 - lon1);
+
+                var fLat1 = ConvertNumericToRad(lat1);
+                var fLat2 = ConvertNumericToRad(lat2);
+
+                var a = Math.sin(myLat / 2) * Math.sin(myLat / 2) +
+                    Math.sin(myLng / 2) * Math.sin(myLng / 2) * Math.cos(fLat1) * Math.cos(fLat2);
+
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c;
+
+                $.ajax({
+                    url: "/Panel/ConfirmRequest/" + d + '?lat1=' + lat1 + '&lat2=' + lat2 + '&lng1=' + lon1 + '&lng2=' + lon2,
+                    type: "Get",
+                    data: {}
+                }).done(function (result) {
+                    $('#myModal').modal('show');
+                    $('#bodyModal').html(result);
+                });
+            }
+
+            var map = L.map('map').setView([32.200, 52.800], 8);
+            L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            map.locate({ setView: true, maxZoom: 16 });
+            map.on('locationfound', myLocation);
+
+            var IconSetting = L.Icon.extend({
+                options: {
+                    iconSize: [50, 50],
+                    iconAnchor: [20, 35]
+                }
+            });
+
+            var FirstIcon = new IconSetting({ iconUrl: '/img/001.png' });
+            var SecondIcon = new IconSetting({ iconUrl: '/img/002.png' });
+
+            map.on('click', myClick);
+        </script>
+
+    }
+}
+else
+{
+    if (Model.Status == 0)
+    {
+        <h2>سفر شما در انتظار تأیید راننده است</h2>
+
+        <br />
+
+        <img src="~/img/570726f9398849aa200fbcba9466f9f2.gif" alt="snapp" class="img-fluid" />
+
+        <br />
+
+        <a class="btn btn-danger btn-block" href="/Panel/UpdateStatus/@Model.TransactId">
+            لغو درخواست
+        </a>
+    }
+
+    else if (Model.Status == 1)
+    {
+        <div class="row" id="result">
+            <div class="col-12" id="map2" style="max-height: 200px"></div>
+            <div class="col-12">
+                <h3>هزینه سفر : @Model.Price.ToString("n0") ریال</h3>
+                <br />
+                @if (Model.Wallet >= Model.Price)
+                {
+                    <h3>اعتبار کافی است</h3>
+                }
+                else
+                {
+                    <a href="#" class="btn btn-success btn-block">پرداخت آنلاین</a>
+                }
+            </div>
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <img src="~/img/driver/@Model.Avatar" alt="تصویر پیدا نشد" class="img-responsive" width="80" height="80" style="margin: auto" />
+                            </th>
+                            <th>
+                                <p>@Model.CarName</p>
+                            </th>
+                            <th>
+                                <p>@Model.CarColor</p>
+                            </th>
+                            <th>
+                                <p>@Model.CarCode</p>
+                            </th>
+                            <th>
+                                <p>@Model.DriverName</p>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        @section mySection
+    {
+
+            <link href="~/map/leaflet.css" rel="stylesheet" />
+            <script src="~/map/leaflet.js"></script>
+
+            <script>
+
+            var lattt1 = @Model.StartLat;
+            var lattt2 = @Model.EndLat;
+
+            var lnggg1 = @Model.StartLng;
+            var lnggg2 = @Model.EndLng;
+
+                // نمایش ساده نقشه
+                var map = L.map('map2').setView([lattt1, lnggg1], 15);
+                L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+                // تغییر آیکون
+                var IconSetting = L.Icon.extend({
+                    options: {
+                        iconSize: [50, 50],
+                        iconAnchor: [20, 35]
+                    }
+                });
+
+                var FirstIcon = new IconSetting({ iconUrl: '/img/001.png' });
+                var SecondIcon = new IconSetting({ iconUrl: '/img/002.png' });
+
+                var marker = L.marker(
+                    new L.LatLng(lattt1, lnggg1),
+                    {
+                        icon: FirstIcon
+                    }
+                ).addTo(map);
+
+                var marker = L.marker(
+                    new L.LatLng(lattt2, lnggg2),
+                    {
+                        icon: SecondIcon
+                    }
+                ).addTo(map);
+
+            </script>
+
+        }
+    }
+    else if (Model.Status == 2)
+    {
+        <div class="row">
+
+            <div class="col-lg-6">
+                <a href="/panel/updaterate/@Model.TransactId?rate=1">
+                    <i class="fa fa-star-o fa-3x"></i>
+                </a>
+                <a href="/panel/updaterate/@Model.TransactId?rate=2">
+                    <i class="fa fa-star-o fa-3x"></i>
+                </a>
+                <a href="/panel/updaterate/@Model.TransactId?rate=3">
+                    <i class="fa fa-star-o fa-3x"></i>
+                </a>
+                <a href="/panel/updaterate/@Model.TransactId?rate=4">
+                    <i class="fa fa-star-o fa-3x"></i>
+                </a>
+                <a href="/panel/updaterate/@Model.TransactId?rate=5">
+                    <i class="fa fa-star-o fa-3x"></i>
+                </a>
+            </div>
+
+        </div>
+    }
+}
